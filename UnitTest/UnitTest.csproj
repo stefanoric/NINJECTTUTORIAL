@@ -44,9 +44,6 @@
     <Reference Include="xunit">
       <HintPath>..\..\..\..\..\..\..\..\xUnit\xunit.dll</HintPath>
     </Reference>
-    <Reference Include="xunit.extensions">
-      <HintPath>..\..\..\..\..\..\..\..\xUnit\xunit.extensions.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="When_creating_a_tax_calculator.cs" />
