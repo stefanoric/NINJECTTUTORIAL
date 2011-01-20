@@ -1,5 +1,0 @@
-C:\Users\sricciardi.ORS\Documents\Visual Studio 2010\Projects\Prove\NinjectTest\TaxCalculator\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\sricciardi.ORS\Documents\Visual Studio 2010\Projects\Prove\NinjectTest\TaxCalculator\bin\Debug\TaxCalculator.dll
-C:\Users\sricciardi.ORS\Documents\Visual Studio 2010\Projects\Prove\NinjectTest\TaxCalculator\bin\Debug\TaxCalculator.pdb
-C:\Users\sricciardi.ORS\Documents\Visual Studio 2010\Projects\Prove\NinjectTest\TaxCalculator\obj\Debug\TaxCalculator.dll
-C:\Users\sricciardi.ORS\Documents\Visual Studio 2010\Projects\Prove\NinjectTest\TaxCalculator\obj\Debug\TaxCalculator.pdb
