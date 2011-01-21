@@ -31,7 +31,7 @@ namespace Accounting
             _rate = rate;
         }
 
-        public decimal CalculateTax(decimal gross)
+        public decimal CalculateTax(decimal amount)
         {
             return Math.Round(_rate * gross, 2);
         }
