@@ -21,7 +21,6 @@ using System.Text;
 using Accounting;
 using Ninject;
 using Xunit;
-using Xunit.Extensions;
 using Ninject.Parameters;
 
 namespace UnitTest

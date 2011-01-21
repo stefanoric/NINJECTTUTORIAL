@@ -33,7 +33,7 @@ namespace Accounting
 
         public decimal CalculateTax(decimal amount)
         {
-            return Math.Round(_rate * gross, 2);
+            return Math.Round(_rate * amount, 2);
         }
     }
 }
