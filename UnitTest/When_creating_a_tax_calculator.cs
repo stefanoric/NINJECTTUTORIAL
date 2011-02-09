@@ -51,6 +51,40 @@ namespace UnitTest
                 Assert.Throws<Ninject.ActivationException>(() => kernel.Get<ITaxCalculator>()); // this should throw
             }
         }
+
+        [Fact]
+        public void it_should_be_possible_to_create_a_singleton()
+        {
+            using (IKernel kernel = new StandardKernel())
+            {
+                kernel.Bind<ITaxCalculator>()
+                      .To<TaxCalculator>()
+                      .InSingletonScope()
+                      .WithConstructorArgument("rate", .2M);
+
+                var tc1 = kernel.Get<ITaxCalculator>();
+                var tc2 = kernel.Get<ITaxCalculator>();
+
+                Assert.Same(tc1, tc2);
+            }
+        }
+
+        [Fact]
+        public void it_should_be_possible_to_create_a_transient_calculator()
+        {
+            using (IKernel kernel = new StandardKernel())
+            {
+                kernel.Bind<ITaxCalculator>()
+                      .To<TaxCalculator>()
+                      .InTransientScope() // this would be the default, so it's redundant
+                      .WithConstructorArgument("rate", .2M);
+
+                var tc1 = kernel.Get<ITaxCalculator>();
+                var tc2 = kernel.Get<ITaxCalculator>();
+
+                Assert.NotSame(tc1, tc2);
+            }
+        }
     }
 
     public class When_creating_a_sale
@@ -84,6 +118,43 @@ namespace UnitTest
                 var lineItem2 = new SaleLineItem("Casablanca", 5M, 2);
 
                 var sale = kernel.Get<Sale>(); // note that we do not mention tax calculator at all here!
+                sale.AddItem(lineItem1);
+                sale.AddItem(lineItem2);
+
+                Assert.Equal(24M, sale.GetTotal());
+            }
+        }
+
+
+        [Fact]
+        public void the_tax_calculator_can_be_injected_as_a_property()
+        {
+            using (IKernel kernel = new StandardKernel())
+            {
+                kernel.Bind<ITaxCalculator>().To<TaxCalculator>().WithConstructorArgument("rate", .2M);
+
+                var lineItem1 = new SaleLineItem("Gone with the wind", 10M, 1);
+                var lineItem2 = new SaleLineItem("Casablanca", 5M, 2);
+
+                var sale = kernel.Get<Sale2>(); // note that we do not mention tax calculator at all here!
+                sale.AddItem(lineItem1);
+                sale.AddItem(lineItem2);
+
+                Assert.Equal(24M, sale.GetTotal());
+            }
+        }
+
+        [Fact]
+        public void the_tax_calculator_can_be_injected_in_a_marked_constructor()
+        {
+            using (IKernel kernel = new StandardKernel())
+            {
+                kernel.Bind<ITaxCalculator>().To<TaxCalculator>().WithConstructorArgument("rate", .2M);
+
+                var lineItem1 = new SaleLineItem("Gone with the wind", 10M, 1);
+                var lineItem2 = new SaleLineItem("Casablanca", 5M, 2);
+
+                var sale = kernel.Get<Sale3>(); // note that we do not mention tax calculator at all here!
                 sale.AddItem(lineItem1);
                 sale.AddItem(lineItem2);
 

@@ -46,6 +46,8 @@
     <Compile Include="ITaxCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sale.cs" />
+    <Compile Include="Sale2.cs" />
+    <Compile Include="Sale3.cs" />
     <Compile Include="SaleLineItem.cs" />
     <Compile Include="TaxCalculator.cs" />
   </ItemGroup>
